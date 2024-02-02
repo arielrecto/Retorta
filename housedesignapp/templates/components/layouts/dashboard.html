@@ -1,0 +1,39 @@
+{% extends 'components/master.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    
+    {% block subTitle %}
+        
+    {% endblock subTitle %}
+        
+{% endblock title %}
+    
+
+
+
+{% block content %}
+    
+<div class="w-full flex min-h-screen">\
+    <div class="w-96 min-h-screen">
+        {% include 'components/admin/sidebar.html' %}
+    </div>
+    
+    <div class="flex flex-col gap-2 p-4 w-full">
+        <div class="w-full h-auto">
+            {% include 'components/admin/navbar.html' %}
+        </div>
+       
+        {% block subContent %}
+    
+
+        {% endblock subContent %}
+    </div>
+   
+</div>
+ 
+        
+{% endblock content %}
+    

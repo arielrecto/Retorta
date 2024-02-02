@@ -1,0 +1,85 @@
+{% extends 'components/layouts/dashboard.html' %}
+
+
+
+
+
+{% block subTitle %}
+    {{appointment.name}}
+{% endblock subTitle %}
+
+
+
+
+{% block subContent %}
+    <div class="w-full h-auto flex p-2 rounded-lg bg-base-200 gap-5">
+        <div class="h-auto w-96">
+            <img src="{{appointment.project_id.image.url}}" alt="" srcset="" class="w-full h-auto object object-center rounded-lg">
+        </div>
+        <div class="flex flex-col gap-2 w-full">
+            <div class="flex items-center p-2 w-full justify-between">
+                <h1 class="text-3xl font-bold p-2 capitalize">{{appointment.name}}</h1>
+                <div class="flex items-center gap-5">
+                    {% if appointment.status == appointment.Status.PENDING %}
+                    <a href="{% url 'appointment_show' appointment.id %}?status=APPROVED" class="btn btn-xs btn-accent">Approve</a>
+                    <a href="{% url 'appointment_show' appointment.id %}?status=REJECT" class="btn btn-xs btn-error">Reject</a>
+
+                    {% endif %}
+                </div>
+            </div>
+            <h1 class="text-sm py-2">
+                <span class="font-bold">
+                  Status: 
+                </span>
+                <span>
+                    {{appointment.status}}
+                </span>
+               
+            </h1>
+           
+            <div class="w-full h-64 bg-base-100 rounded-lg p-2">
+                {{appointment.project_id.description}}
+            </div>
+            <h1 class="text-sm py-2">
+                <span class="font-bold">
+                    Email: 
+                </span>
+                <span>
+                    {{appointment.email}}
+                </span>
+               
+            </h1>
+            <h1 class="text-sm py-2">
+                <span class="font-bold">
+                    Fullname: 
+                </span>
+                <span>
+                    {{appointment.name}}
+                </span>
+               
+            </h1>
+            <h1 class="text-sm py-2">
+                <span class="font-bold">
+                    Contact Number: 
+                </span>
+                <span>
+                    {{appointment.contact_number}}
+                </span>
+               
+            </h1>
+            <h1 class="text-sm py-2">
+                <span class="font-bold">
+                    Date: 
+                </span>
+                <span>
+                    {{appointment.date}}
+                </span>
+               
+            </h1>
+            <p class="text-xl font-bold flex gap-2 tracking-widest">
+                &#8369  {{appointment.project_id.price}}
+            </p>   
+        </div>
+    </div>
+{% endblock subContent %}
+    

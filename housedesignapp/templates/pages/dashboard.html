@@ -1,0 +1,106 @@
+{% extends 'components\layouts\dashboard.html' %}
+
+{% load static %}
+
+
+{% block subTitle %}
+Dashboard
+{% endblock subTitle %}
+
+
+
+{% block subContent %}
+<div class="flex flex-col gap-2 h-full w-full">
+    <div class="grid grid-cols-3 grid-flow-row h-32 gap-2">
+        <div class="w-full rounded-lg bg-primary flex flex-col space-y-5 p-2">
+            <h1 class="text-2xl font-bold tracking-wider">
+                Inbox
+            </h1>
+            <div class="flex justify-end w-full">
+                <span class="w-5/6 font-bold text-3xl truncate text-end">
+                    {{total_inbox}}
+                </span>
+            </div>
+
+        </div>
+        <div class="w-full rounded-lg bg-accent flex flex-col gap-2 p-2 space-y-5">
+            <h1 class="text-2xl font-bold tracking-wider">
+                Appointments
+            </h1>
+            <div class="flex justify-end w-full ">
+                <span class="w-5/6 font-bold text-3xl truncate text-end">
+                    {{total_appointments}}
+                </span>
+            </div>
+        </div>
+        <div class="w-full rounded-lg bg-secondary flex flex-col gap-2 p-2 space-y-5">
+            <h1 class="text-2xl font-bold tracking-wider">
+                Projects
+            </h1>
+            <div class="flex justify-end w-full ">
+                <span class="w-5/6 font-bold text-3xl truncate text-end">
+                    {{total_projects}}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-2 bg-base-200 rounded-lg h-96 w-full p-2">
+        <h1 class="text-2xl font-bold text-accent">
+            Projects
+        </h1>
+        <div class="overflow-x-auto">
+            <table class="table">
+                <!-- head -->
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>price</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- row 1 -->
+
+
+
+
+                    {% for project in projects %}
+                    <tr>
+                        <td>
+                            <div class="flex items-center gap-4">
+                                <div class="avatar">
+                                    <div class="mask mask-squircle w-12 h-12">
+                                        <a href="{{ project.image.url }}" class="services">
+                                            <img src="{{ project.image.url }}" alt="Avatar Tailwind CSS Component" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-bold capitalize">{{project.name}}</div>
+                                    <!-- <div class="text-sm opacity-50">United States</div> -->
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8369 {{project.price}}
+                        </td>
+                        <td>
+                            {{project.description}}
+                        </td>
+                        <td>
+                            <div class="flex items-center">
+                                <a href="{{HTTP_HOST}}/projects/show/{{project.id}}" class="btn btn-xs btn-secondary capitalize">
+                                    <i class="fi fi-rr-eye"></i>
+                                    <span>
+                                    view
+                                </span></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock subContent %}

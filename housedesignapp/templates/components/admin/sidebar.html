@@ -1,0 +1,20 @@
+<div class="p-4 w-full h-full bg-base-200 flex flex-col space-y-10">
+    <div class="w-full flex items-center">
+        <h1 class="text-accent font-bold text-4xl tracking-widest">J-INTERIOR</h1>
+    </div>
+    <div class="w-full flex flex-col">
+        <a href="{% url 'dashboard' %}" class="flex items-center hover:bg-accent duration-700 hover:text-white capitalize p-2 rounded-lg gap-5">
+            <i class="fi fi-rr-dashboard pt-1"></i> <span>dashboard</span>
+        </a>
+        <a href="{% url 'inbox_list' %}" class="flex items-center hover:bg-accent duration-700 hover:text-white capitalize p-2 rounded-lg gap-5">
+            <i class="fi fi-rr-inbox-in pt-1"></i> <span>inbox</span>
+        </a>
+        <a href="{% url 'appointment_list' %}" class="flex items-center hover:bg-accent duration-700 hover:text-white capitalize p-2 rounded-lg gap-5">
+            <i class="fi fi-rr-calendar-day pt-1"></i><span>Appointments</span>
+        </a>
+        <a href="{% url 'project_list' %}" class="flex items-center hover:bg-accent duration-700 hover:text-white capitalize p-2 rounded-lg gap-5">
+            <i class="fi fi-rr-diagram-project pt-1"></i> <span>projects</span>
+        </a>
+    </div>
+
+</div>

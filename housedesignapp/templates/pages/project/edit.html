@@ -1,0 +1,44 @@
+{% extends 'components/layouts/dashboard.html' %}
+
+
+
+
+
+{% block subTitle %}
+{{project.name}}
+{% endblock subTitle %}
+
+
+
+
+{% block subContent %}
+<div class="w-full h-auto flex p-2 rounded-lg bg-base-200 gap-5">
+    <div class="flex flex-col gap-2 w-full">
+        <form action="{% url 'project_edit' project.id %}" method="post" class="w-full h-auto p-2 flex flex-col gap-2" enctype="multipart/form-data">
+            <h1 class="text-2xl w-full font-bold ">
+                Edit
+            </h1>
+            {% csrf_token %}
+            <div class="flex flex-col gap-2">
+                <label for="">Name</label>
+                <input type="text" name="name" class="input input-accent w-full" placeholder="{{project.name}}">
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="">Image</label>
+                <input type="file" name="project_image" class="file-input file-input-accent w-full" placeholder="{{project.image}}" >
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="">Price</label>
+                <input type="number" name="price" placeholder="{{project.price}}" class="file-input file-input-accent w-full">
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="">Description</label>
+                <textarea name="description" id="" cols="30" rows="10" class="w-full textarea textarea-accent" placeholder="{{project.description}}"></textarea>
+            </div>
+            <button class="btn btn-sm w-full btn-accent">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock subContent %}

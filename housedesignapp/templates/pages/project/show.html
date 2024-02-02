@@ -1,0 +1,45 @@
+{% extends 'components/layouts/dashboard.html' %}
+
+
+
+
+
+{% block subTitle %}
+    {{project.name}}
+{% endblock subTitle %}
+
+
+
+
+{% block subContent %}
+    <div class="w-full h-auto flex p-2 rounded-lg bg-base-200 gap-5">
+        <div class="h-auto w-96">
+            <img src="{{project.image.url}}" alt="" srcset="" class="w-full h-auto object object-center rounded-lg">
+        </div>
+        <div class="flex flex-col gap-2 w-full">
+            <div class="flex items-center p-2 w-full justify-between">
+                <h1 class="text-3xl font-bold p-2 capitalize">{{project.name}}</h1>
+                <div class="flex items-center gap-5 capitalize text-sm">
+                    <a href="{% url 'project_edit' project.id %}" class="btn btn-xs btn-secondary">
+                        <i class="fi fi-rr-edit pt-1"></i>
+                      <span>
+                        edit
+                      </span>
+                    </a>
+                    <a href="{% url 'project_delete' project.id %}" class="btn btn-xs btn-error">
+                        <i class="fi fi-rr-trash pt-1"></i>
+                        <span>delete</span>
+                    </a>
+                </div>
+            </div>
+           
+            <div class="w-full h-64 bg-base-100 rounded-lg p-2">
+                {{project.description}}
+            </div>
+            <p class="text-xl font-bold flex gap-2 tracking-widest">
+                &#8369  {{project.price}}
+            </p>    
+        </div>
+    </div>
+{% endblock subContent %}
+    
